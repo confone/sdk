@@ -1,26 +1,73 @@
 <?php
-class Confone_Content {
+class Confone_Content extends Confone_Service {
 
 	private $group = null;
+	private $error = null;
 
 	public function __construct($group) {
 		$this->group = $group;
 	}
 
 	public function getGroupImages() {
-		
+		$response = $this->execute('/image/group/'.$this->group.'/images', 'GET');
+
+		$rv = null;
+		if ($response['status']=='success') {
+			$rv = $response['images'];
+		} else {
+			$this->error = $response['description'];
+		}
+
+		return $rv;
 	}
 
 	public function getGroupPreviewImages() {
-		
+		$response = $this->execute('/image/group/'.$this->group.'/images?preview=true', 'GET');
+
+		$rv = null;
+		if ($response['status']=='success') {
+			$rv = $response['images'];
+		} else {
+			$this->error = $response['description'];
+		}
+
+		return $rv;
 	}
 
-	public function getGroupTexts() {
-		
+	public function getGroupTexts($language) {
+		$this->addHeader('language', $language);
+		$response = $this->execute('/text/group/'.$this->group.'/texts', 'GET');
+
+		$rv = null;
+		if ($response['status']=='success') {
+			$rv = $response['texts'];
+		} else {
+			$this->error = $response['description'];
+		}
+
+		return $rv;
 	}
 
-	public function getGroupPreviewTexts() {
-		
+	public function getGroupPreviewTexts($language) {
+		$this->addHeader('language', $language);
+		$response = $this->execute('/text/group/'.$this->group.'/texts?preview=true', 'GET');
+
+		$rv = null;
+		if ($response['status']=='success') {
+			$rv = $response['texts'];
+		} else {
+			$this->error = $response['description'];
+		}
+
+		return $rv;
+	}
+
+	public function getError() {
+		return $this->error;
+	}
+
+	protected function getBaseUri() {
+		return Confone::getContentUri();
 	}
 }
 ?>

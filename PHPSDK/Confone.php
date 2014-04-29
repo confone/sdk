@@ -18,8 +18,11 @@ require(dirname(__FILE__) . '/Confone/Confone.php');
 // Utilities
 require(dirname(__FILE__) . '/Confone/Util.php');
 
-// Content Management
+// Service Base Class
+require(dirname(__FILE__) . '/Confone/Service.php');
+
+// Content Management Service
 require(dirname(__FILE__) . '/Confone/Content.php');
 
-// Security
+// Security Service
 require(dirname(__FILE__) . '/Confone/Security.php');

@@ -2,8 +2,8 @@
 class Confone {
 
 	private static $appKey = null;
-	private static $contentUri = 'https://content.confone.com/rest';
-	private static $securityUri = 'https://security.confone.com/rest';
+	private static $contentUri = 'http://local.content.confone.com/rest';
+	private static $securityUri = 'http://local.security.confone.com/rest';
 	private static $version = 'v0.1.0';
 
 	public static function setAppKey($appKey) {
