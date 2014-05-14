@@ -21,7 +21,7 @@ require(dirname(__FILE__) . '/Confone/Util.php');
 // Service Base Class
 require(dirname(__FILE__) . '/Confone/Service.php');
 
-// Content Management Service
+// Content Service
 require(dirname(__FILE__) . '/Confone/Content.php');
 
 // Security Service
