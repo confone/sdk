@@ -9,8 +9,8 @@ class Confone_Security extends Confone_Service {
 		$this->group = $group;
 	}
 
-	public function addRule($ruleName, $ruleSubject) {
-		$this->ruleSet[$ruleName] = $ruleSubject;
+	public function setRule($ruleName, Confone_Security_Subject $ruleSubject) {
+		$this->ruleSet[$ruleName] = $ruleSubject->getJsonSubject();
 	}
 
 	public function scan() {
@@ -19,7 +19,11 @@ class Confone_Security extends Confone_Service {
 		$success = ($response['status']!='failed');
 
 		if (!$success) {
-			$this->failures = $response['rules'];
+			if ($response['status_code']=='200') {
+				$this->failures = $response['rules'];
+			} else {
+				$this->failures = array($response['description']);
+			}
 		}
 
 		return $success;

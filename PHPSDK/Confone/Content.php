@@ -4,7 +4,7 @@ class Confone_Content extends Confone_Service {
 	private $group = null;
 	private $error = null;
 
-	public function __construct($group) {
+	public function __construct(string $group) {
 		$this->group = $group;
 	}
 
@@ -34,7 +34,7 @@ class Confone_Content extends Confone_Service {
 		return $rv;
 	}
 
-	public function getGroupTexts($language) {
+	public function getGroupTexts(string $language) {
 		$this->addHeader('language', $language);
 		$response = $this->execute('/text/group/'.$this->group.'/texts', 'GET');
 
@@ -48,7 +48,7 @@ class Confone_Content extends Confone_Service {
 		return $rv;
 	}
 
-	public function getGroupPreviewTexts($language) {
+	public function getGroupPreviewTexts(string $language) {
 		$this->addHeader('language', $language);
 		$response = $this->execute('/text/group/'.$this->group.'/texts?preview=true', 'GET');
 

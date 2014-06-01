@@ -16,7 +16,7 @@ if (!function_exists('mb_detect_encoding')) {
 require(dirname(__FILE__) . '/Confone/Confone.php');
 
 // Utilities
-require(dirname(__FILE__) . '/Confone/Util.php');
+require(dirname(__FILE__) . '/Confone/Utility.php');
 
 // Service Base Class
 require(dirname(__FILE__) . '/Confone/Service.php');
@@ -26,3 +26,11 @@ require(dirname(__FILE__) . '/Confone/Content.php');
 
 // Security Service
 require(dirname(__FILE__) . '/Confone/Security.php');
+require(dirname(__FILE__) . '/Confone/Security/Rule.php');
+require(dirname(__FILE__) . '/Confone/Security/Rule_Token.php');
+require(dirname(__FILE__) . '/Confone/Security/Subject.php');
+require(dirname(__FILE__) . '/Confone/Security/Subject_Blacklist.php');
+require(dirname(__FILE__) . '/Confone/Security/Subject_Geodetic.php');
+require(dirname(__FILE__) . '/Confone/Security/Subject_Throttling.php');
+require(dirname(__FILE__) . '/Confone/Security/Subject_Token.php');
+require(dirname(__FILE__) . '/Confone/Security/Subject_Whitelist.php');
