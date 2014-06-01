@@ -14,11 +14,11 @@ $throttlingSubj = new Confone_Security_Subject_Throttling($_SERVER['REMOTE_ADDR'
 
 $securityServ->setRule('throttling', $throttlingSubj);
 
-if (!$securityServ->scan()) {
-	sleep(2);
+if ($securityServ->scan()) {
+	echo 'allowed';
+} else {
+	echo 'throttled';
 }
-
-echo 'good';
 ?>
 
 </body>
