@@ -17,7 +17,7 @@ class Confone_Security extends Confone_Service {
 		$response = $this->execute('/enforce/'.$this->group, 'POST', $this->ruleSet);
 
 		$success = ($response['status']!='failed');
-
+error_log(json_encode($this->ruleSet['geo_scan']).' ::: '.json_encode($response));
 		if (!$success) {
 			if ($response['status_code']=='200') {
 				$this->failures = $response['rules'];

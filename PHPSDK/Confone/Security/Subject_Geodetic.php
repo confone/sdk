@@ -18,7 +18,7 @@ class Confone_Security_Subject_Geodetic extends Confone_Security_Subject {
 	}
 
 	public function getJsonSubject() {
-		return json_encode($this->subjectArray);
+		return $this->subjectArray;
 	}
 }
 ?>
