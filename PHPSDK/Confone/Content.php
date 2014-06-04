@@ -4,12 +4,12 @@ class Confone_Content extends Confone_Service {
 	private $group = null;
 	private $error = null;
 
-	public function __construct(string $group) {
+	public function __construct($group) {
 		$this->group = $group;
 	}
 
-	public function getGroupImages() {
-		$response = $this->execute('/image/group/'.$this->group.'/images', 'GET');
+	public function getGroupImages($start, $size) {
+		$response = $this->execute('/image/group/'.$this->group.'/images?start='.$start.'&size='.$size, 'GET');
 
 		$rv = null;
 		if ($response['status']=='success') {
@@ -21,8 +21,8 @@ class Confone_Content extends Confone_Service {
 		return $rv;
 	}
 
-	public function getGroupPreviewImages() {
-		$response = $this->execute('/image/group/'.$this->group.'/images?preview=true', 'GET');
+	public function getGroupPreviewImages($start, $size) {
+		$response = $this->execute('/image/group/'.$this->group.'/images?preview=true&start='.$start.'&size='.$size, 'GET');
 
 		$rv = null;
 		if ($response['status']=='success') {
@@ -34,9 +34,9 @@ class Confone_Content extends Confone_Service {
 		return $rv;
 	}
 
-	public function getGroupTexts(string $language) {
+	public function getGroupTexts($language, $start='', $size='') {
 		$this->addHeader('language', $language);
-		$response = $this->execute('/text/group/'.$this->group.'/texts', 'GET');
+		$response = $this->execute('/text/group/'.$this->group.'/texts?start='.$start.'&size='.$size, 'GET');
 
 		$rv = null;
 		if ($response['status']=='success') {
@@ -48,9 +48,9 @@ class Confone_Content extends Confone_Service {
 		return $rv;
 	}
 
-	public function getGroupPreviewTexts(string $language) {
+	public function getGroupPreviewTexts($language, $start='', $size='') {
 		$this->addHeader('language', $language);
-		$response = $this->execute('/text/group/'.$this->group.'/texts?preview=true', 'GET');
+		$response = $this->execute('/text/group/'.$this->group.'/texts?preview=true&start='.$start.'&size='.$size, 'GET');
 
 		$rv = null;
 		if ($response['status']=='success') {
